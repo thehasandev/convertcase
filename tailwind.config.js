@@ -8,6 +8,8 @@ export default {
     extend: {
       fontFamily: {
         'primary': ["Bebas Neue"],
+        'oswald': ["Oswald"],
+        'pop': ["Poppins"],
       }
     },
   },

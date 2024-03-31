@@ -11,7 +11,6 @@ function Navbar() {
 
           <div className="flex items-center flex-row-reverse gap-x-2">
           <h2 className="font-medium text-base text-white">Enable Dark Mode</h2>
-            
             <label className="swap swap-rotate">
               <input type="checkbox" />
               <svg
