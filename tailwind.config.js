@@ -12,7 +12,11 @@ export default {
         'pop': ["Poppins"],
       }
     },
+    daisyui: {
+      themes: ["dark", "light"],
+    },
   },
   plugins: [require("daisyui")],
+
 }
 

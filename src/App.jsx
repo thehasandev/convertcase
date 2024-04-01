@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import copy from "copy-to-clipboard";
+import { MyContext } from "./appContext";
 function App() {
+  const [open,setOpen] = useState(false)
   const [result, setResult] = useState("");
 
   const downloadText = () => {
@@ -45,10 +47,11 @@ function App() {
   };
 
   return (
-    <section>
+   <MyContext.Provider value={{ open, setOpen }}>
+    <section style={{height:"100vh"}} data-theme={open ? "dark" : "light"}>
       <Navbar />
       <div className="max-w-[1400px] mx-auto mt-5">
-        <h1 className="font-oswald text-black/90 font-medium text-4xl mb-4 capitalize">
+        <h1  className={`font-oswald ${open ? "text-white" : "text-black/90"} font-medium text-4xl mb-4 capitalize`}>
           enter the text
         </h1>
         <textarea
@@ -83,6 +86,13 @@ function App() {
         </button>
 
         <button
+          onClick={handleTitleCase}
+          className="font-pop text-base bg-blue-900 rounded-sm mr-5 duration-500 hover:bg-blue-950 text-white font-normal px-4 py-2"
+        >
+          Title Case
+        </button>
+
+        <button
           onClick={() => {
             copy(result && result);
           }}
@@ -91,12 +101,7 @@ function App() {
           Copy to Clipboard
         </button>
 
-        <button
-          onClick={handleTitleCase}
-          className="font-pop text-base bg-blue-900 rounded-sm mr-5 duration-500 hover:bg-blue-950 text-white font-normal px-4 py-2"
-        >
-          Title Case
-        </button>
+      
 
         <button
           onClick={handleTitleCase}
@@ -119,6 +124,7 @@ function App() {
         </button>
       </div>
     </section>
+   </MyContext.Provider>
   );
 }
 
